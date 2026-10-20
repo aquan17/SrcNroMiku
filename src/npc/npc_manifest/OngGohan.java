@@ -23,6 +23,7 @@ import services.PetService;
 import services.Service;
 import services.TaskService;
 import services.func.Input;
+import server.Manager;
 import shop.ShopService;
 import task.Badges.BadgesTaskService;
 import utils.Util;
@@ -33,6 +34,9 @@ public class OngGohan extends Npc {
         super(mapId, status, cx, cy, tempId, avartar);
     }
 
+    private final int MENU_TEST = 9999;
+    private final int MENU_TEST_PET = 9998;
+
     int costNapVang = 1;
 
     int[][] napVang = {{20000, 40}, {50000, 105}, {100000, 250}, {500000, 1500}, {1000000, 3100},
@@ -42,6 +46,18 @@ public class OngGohan extends Npc {
     public void openBaseMenu(Player player) {
         if (canOpenNpc(player)) {
             if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
+                if (Manager.TEST) {
+                    this.createOtherMenu(player, MENU_TEST,
+                            "|7|CHẾ ĐỘ MÁY CHỦ THỬ NGHIỆM (TEST MODE)\n|1|Con cần nhận hỗ trợ gì để test nào?",
+                            "Nhận Đệ Tử\n(TEST)",
+                            "Nhận Vàng/Ngọc\n(TEST)",
+                            "Đồ VIP & Cải Trang\n(TEST)",
+                            "Buff 10 Tỷ\nSức Mạnh",
+                            "Mở Thành Viên\n(Free)",
+                            "Menu Gốc",
+                            "Từ chối");
+                    return;
+                }
                 if (DailyGiftService.checkDailyGift(player, ConstDailyGift.NHAN_NGOC_XANH)) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU,
                             "Con cần ta giúp gì nào",
@@ -67,6 +83,104 @@ public class OngGohan extends Npc {
     @Override
     public void confirmMenu(Player player, int select) {
         if (canOpenNpc(player)) {
+            if (player.iDMark.getIndexMenu() == MENU_TEST) {
+                switch (select) {
+                    case 0 -> {
+                        if (player.pet == null) {
+                            PetService.gI().createNormalPet(player);
+                            Service.gI().sendThongBao(player, "Nhận đệ tử thành công! Hãy chăm sóc đệ tử nhé.");
+                        } else {
+                            this.createOtherMenu(player, MENU_TEST_PET,
+                                    "Con đã có đệ tử rồi, con muốn làm gì?",
+                                    "Đổi sang\nĐệ Mabư", "Buff 10 Tỷ\nSM Đệ Tử", "Đóng");
+                        }
+                    }
+                    case 1 -> {
+                        Item thoiVang = ItemService.gI().createNewItem((short) 457, 500);
+                        thoiVang.itemOptions.add(new Item.ItemOption(30, 0));
+                        InventoryService.gI().addItemBag(player, thoiVang);
+                        player.inventory.gem = 999999;
+                        player.inventory.ruby = 99999;
+                        Service.gI().sendMoney(player);
+                        InventoryService.gI().sendItemBag(player);
+                        Service.gI().sendThongBao(player, "Đã nhận 500 Thỏi Vàng, 999.999 Ngọc Xanh và 99.999 Hồng Ngọc!");
+                    }
+                    case 2 -> {
+                        if (InventoryService.gI().getCountEmptyBag(player) < 11) {
+                            Service.gI().sendThongBao(player, "Hành trang cần tối thiểu 11 ô trống!");
+                            return;
+                        }
+                        Item bt = ItemService.gI().createNewItem((short) 1852, 1);
+                        bt.itemOptions.add(new Item.ItemOption(31, 0));
+                        bt.itemOptions.add(new Item.ItemOption(50, 30));
+                        bt.itemOptions.add(new Item.ItemOption(77, 30));
+                        bt.itemOptions.add(new Item.ItemOption(103, 30));
+                        bt.itemOptions.add(new Item.ItemOption(30, 0));
+                        InventoryService.gI().addItemBag(player, bt);
+
+                        Item ct = ItemService.gI().createNewItem((short) 1697, 1);
+                        ct.itemOptions.add(new Item.ItemOption(31, 0));
+                        ct.itemOptions.add(new Item.ItemOption(50, 40));
+                        ct.itemOptions.add(new Item.ItemOption(77, 40));
+                        ct.itemOptions.add(new Item.ItemOption(103, 40));
+                        ct.itemOptions.add(new Item.ItemOption(30, 0));
+                        InventoryService.gI().addItemBag(player, ct);
+
+                        Item canh = ItemService.gI().createNewItem((short) 1110, 1);
+                        canh.itemOptions.add(new Item.ItemOption(31, 0));
+                        canh.itemOptions.add(new Item.ItemOption(50, 20));
+                        canh.itemOptions.add(new Item.ItemOption(77, 20));
+                        canh.itemOptions.add(new Item.ItemOption(30, 0));
+                        InventoryService.gI().addItemBag(player, canh);
+
+                        Item cap = ItemService.gI().createNewItem((short) 194, 1);
+                        cap.itemOptions.add(new Item.ItemOption(30, 0));
+                        cap.itemOptions.add(new Item.ItemOption(31, 0));
+                        InventoryService.gI().addItemBag(player, cap);
+
+                        for (int i = 14; i <= 20; i++) {
+                            Item nr = ItemService.gI().createNewItem((short) i, 99);
+                            nr.itemOptions.add(new Item.ItemOption(30, 0));
+                            InventoryService.gI().addItemBag(player, nr);
+                        }
+                        InventoryService.gI().sendItemBag(player);
+                        Service.gI().sendThongBao(player, "Đã nhận Set Đồ VIP, Cải trang Gogeta, Bông tai C3, Cánh và Ngọc Rồng!");
+                    }
+                    case 3 -> {
+                        Service.gI().addSMTN(player, (byte) 2, 10_000_000_000L, false);
+                        Service.gI().sendThongBao(player, "Đã tăng 10 Tỷ sức mạnh và tiềm năng!");
+                    }
+                    case 4 -> {
+                        player.getSession().actived = true;
+                        Service.gI().sendThongBao(player, "Đã kích hoạt Mở Thành Viên miễn phí!");
+                    }
+                    case 5 -> {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU,
+                                "Con cần ta giúp gì nào",
+                                "Nạp tiền",
+                                "Hỗ trợ\nNhiệm vụ",
+                                "Hộp thư",
+                                "Mở Thành Viên",
+                                "Từ chối");
+                    }
+                }
+                return;
+            }
+            if (player.iDMark.getIndexMenu() == MENU_TEST_PET) {
+                switch (select) {
+                    case 0 -> {
+                        PetService.gI().changeMabuPet(player);
+                        Service.gI().sendThongBao(player, "Đã đổi sang Đệ Tử Mabư thành công!");
+                    }
+                    case 1 -> {
+                        if (player.pet != null) {
+                            Service.gI().addSMTN(player.pet, (byte) 2, 10_000_000_000L, false);
+                            Service.gI().sendThongBao(player, "Đã buff 10 Tỷ sức mạnh cho đệ tử!");
+                        }
+                    }
+                }
+                return;
+            }
             if (player.iDMark.isBaseMenu()) {
                 if (DailyGiftService.checkDailyGift(player, ConstDailyGift.NHAN_NGOC_XANH)) {
                     switch (select) {

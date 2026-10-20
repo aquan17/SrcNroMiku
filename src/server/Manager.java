@@ -949,7 +949,8 @@ public final class Manager {
             LOCAL = String.valueOf(value).toLowerCase().equals("true");
         }
         if ((value = properties.get("server.test")) != null) {
-            TEST = String.valueOf(value).toLowerCase().equals("true");
+            String str = String.valueOf(value).trim().toLowerCase();
+            TEST = str.equals("true") || str.equals("1");
         }
         if ((value = properties.get("server.daoautoupdater")) != null) {
             DAO_AUTO_UPDATER = String.valueOf(value).toLowerCase().equals("true");
