@@ -23,7 +23,7 @@ public class ServerNotify extends Thread {
 
     private final String notify[] = {"Dành cho người chơi trên 18 tuổi. Chơi quá 180 phút một ngày sẽ ảnh hưởng đến sức khỏe."
             , "Trò chơi không có bản quyền chính thức, hãy cân nhắc kỹ trước khi tham gia."
-            , "NRO Yuki - Trang Chủ: https://longgioi.lugiacloud.com/"};
+            , "NRO Yuki - Trang Chủ: https://nroyuki.click/"};
 
     private static ServerNotify instance;
 

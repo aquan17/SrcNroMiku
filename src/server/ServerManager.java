@@ -60,7 +60,7 @@ public class ServerManager {
     public static String timeStart;
 
     public static final Map CLIENTS = new HashMap();
-    public static String DOMAIN = "https://longgioi.lugiacloud.com/"; // Domain Truy Cập
+    public static String DOMAIN = "https://nroyuki.click/"; // Domain Truy Cập
     public static String NAME = "NRO Yuki";
     public static String IP = "36.50.135.98";
     public static int PORT = 14445;

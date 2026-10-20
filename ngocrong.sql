@@ -136,7 +136,7 @@ CREATE TABLE `adminpanel` (
 --
 
 INSERT INTO `adminpanel` (`domain`, `logo`, `trangthai`, `android`, `iphone`, `windows`, `java`) VALUES
-('https://longgioi.lugiacloud.com/', '../image/logo.png', 'hoatdong', 'NroYuki.apk', 'NroYuki.ipa', 'NroYuki.rar', 'NroYuki.jar');
+('https://nroyuki.click/', '../image/logo.png', 'hoatdong', 'NroYuki.apk', 'NroYuki.ipa', 'NroYuki.rar', 'NroYuki.jar');
 
 -- --------------------------------------------------------
 
@@ -4448,7 +4448,7 @@ CREATE TABLE `notify` (
 
 INSERT INTO `notify` (`id`, `name`, `text`) VALUES
 (1, 'Hỗ trợ nhiệm vụ', '1) Hỗ trợ nhiệm vụ TĐST:\r\nNgày thứ 2-3-4 trong tuần từ 5h\r\nđến 7h và từ 17h đến hết 19h,\r\nchỉ những cư dân đang làm nhiệm\r\nvụ này mới vào được map có boss,\r\nnày xuất hiện.\r\n(Núi khỉ đen, hang khỉ đen, núi khỉ\r\nđỏ).\r\n\r\n2) Hỗ trợ nhiệm vụ Xên Bọ Hung:\r\nNgày thứ 2-3-4 trong tuần, từ 2 giờ\r\nsáng đén hết 4 giờ sáng và từ 2 giờ\r\nchiều đến hết 4 giờ chiều, chỉ\r\nnhững cư dân đang làm nhiệm vụ\r\nnày mới vào được map có boss này\r\nxuất hiện.\r\n(Thị trấn Ginder, Võ đài Xên bọ\r\nhung).'),
-(2, 'Tân thủ Ngọc Rồng', '2) Chào mừng các tân thủ đã đến với\r\nNRO Yuki.\r\nBox Zalo: https://zalo.me/g/nognwc039\r\nWeb: longgioi.lugiacloud.com');
+(2, 'Tân thủ Ngọc Rồng', '2) Chào mừng các tân thủ đã đến với\r\nNRO Yuki.\r\nBox Zalo: https://zalo.me/g/nognwc039\r\nWeb: nroyuki.click');
 
 -- --------------------------------------------------------
 
