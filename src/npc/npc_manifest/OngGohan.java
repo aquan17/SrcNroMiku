@@ -36,11 +36,38 @@ public class OngGohan extends Npc {
 
     private final int MENU_TEST = 9999;
     private final int MENU_TEST_PET = 9998;
+    private final int MENU_TEST_CAITRANG = 9997;
 
     int costNapVang = 1;
 
     int[][] napVang = {{20000, 40}, {50000, 105}, {100000, 250}, {500000, 1500}, {1000000, 3100},
     {2000000, 6500}, {5000000, 17000}};
+
+    private static final int[] BATCH_SAIYAN = {2025, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2004, 2006, 2028, 2029, 2011, 2012, 2014, 2015, 2017, 2018, 1988, 1989};
+    private static final int[] BATCH_BOSS = {1967, 1984, 1985, 1986, 1987, 1938, 1946, 1947, 1948, 1949, 1974, 1982, 1981, 2020, 2024, 2030, 2035, 2005, 2008, 2009};
+    private static final int[] BATCH_ANIME = {1968, 1969, 1966, 2031, 2032, 2034, 1927, 1990, 1975, 2001, 2007, 2033, 2037, 2039, 2021, 2022, 2023, 2026, 2027};
+    private static final int[] BATCH_TRANSFORM = {2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064};
+
+    private void giveCaiTrangBatch(Player player, int[] itemIds, String batchName) {
+        if (InventoryService.gI().getCountEmptyBag(player) < itemIds.length) {
+            Service.gI().sendThongBao(player, "Hành trang cần tối thiểu " + itemIds.length + " ô trống để nhận " + batchName + "!");
+            return;
+        }
+        for (int id : itemIds) {
+            Item it = ItemService.gI().createNewItem((short) id, 1);
+            if (it != null && it.template != null) {
+                it.itemOptions.add(new Item.ItemOption(30, 0));
+                it.itemOptions.add(new Item.ItemOption(31, 0));
+                it.itemOptions.add(new Item.ItemOption(50, 30));
+                it.itemOptions.add(new Item.ItemOption(77, 30));
+                it.itemOptions.add(new Item.ItemOption(103, 30));
+                it.itemOptions.add(new Item.ItemOption(5, 5));
+                InventoryService.gI().addItemBag(player, it);
+            }
+        }
+        InventoryService.gI().sendItemBag(player);
+        Service.gI().sendThongBao(player, "Đã nhận trọn bộ " + batchName + " (VIP Vĩnh Viễn)!");
+    }
 
     @Override
     public void openBaseMenu(Player player) {
@@ -51,7 +78,8 @@ public class OngGohan extends Npc {
                             "|7|CHẾ ĐỘ MÁY CHỦ THỬ NGHIỆM (TEST MODE)\n|1|Con cần nhận hỗ trợ gì để test nào?",
                             "Nhận Đệ Tử\n(TEST)",
                             "Nhận Vàng/Ngọc\n(TEST)",
-                            "Đồ VIP & Cải Trang\n(TEST)",
+                            "Đồ VIP Cơ Bản\n(TEST)",
+                            "Cải Trang Mới\n(SuperVIP)",
                             "Buff 10 Tỷ\nSức Mạnh",
                             "Mở Thành Viên\n(Free)",
                             "Menu Gốc",
@@ -147,14 +175,23 @@ public class OngGohan extends Npc {
                         Service.gI().sendThongBao(player, "Đã nhận Set Đồ VIP, Cải trang Gogeta, Bông tai C3, Cánh và Ngọc Rồng!");
                     }
                     case 3 -> {
+                        this.createOtherMenu(player, MENU_TEST_CAITRANG,
+                                "|7|BỘ SƯU TẬP CẢI TRANG MỚI (SUPERVIP)\n|1|Con muốn nhận bộ cải trang nào để test?",
+                                "Set Saiyan & Thần\n(20 món)",
+                                "Set Boss & Zeno\n(20 món)",
+                                "Set Anime & Độc Lạ\n(19 món)",
+                                "Set Biến Hình\n(18 món)",
+                                "Đóng");
+                    }
+                    case 4 -> {
                         Service.gI().addSMTN(player, (byte) 2, 10_000_000_000L, false);
                         Service.gI().sendThongBao(player, "Đã tăng 10 Tỷ sức mạnh và tiềm năng!");
                     }
-                    case 4 -> {
+                    case 5 -> {
                         player.getSession().actived = true;
                         Service.gI().sendThongBao(player, "Đã kích hoạt Mở Thành Viên miễn phí!");
                     }
-                    case 5 -> {
+                    case 6 -> {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Con cần ta giúp gì nào",
                                 "Nạp tiền",
@@ -163,6 +200,15 @@ public class OngGohan extends Npc {
                                 "Mở Thành Viên",
                                 "Từ chối");
                     }
+                }
+                return;
+            }
+            if (player.iDMark.getIndexMenu() == MENU_TEST_CAITRANG) {
+                switch (select) {
+                    case 0 -> giveCaiTrangBatch(player, BATCH_SAIYAN, "Set Saiyan & Thần");
+                    case 1 -> giveCaiTrangBatch(player, BATCH_BOSS, "Set Boss & Zeno");
+                    case 2 -> giveCaiTrangBatch(player, BATCH_ANIME, "Set Anime & Độc Lạ");
+                    case 3 -> giveCaiTrangBatch(player, BATCH_TRANSFORM, "Set Biến Hình");
                 }
                 return;
             }

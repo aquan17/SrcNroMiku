@@ -18,3 +18,7 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Backups
+*backup*.sql
+previews/
