@@ -2583,7 +2583,7 @@ public class BossesData {
                 "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!",}, //text chat 2
             new String[]{"|-1|Mọi chuyện chưa kết thúc đâu",
                 "|-1|Mọi chuyện chưa kết thúc đâu",
-                "|-1|Ngọc Rồng Miku"}, //text chat 3
+                "|-1|NRO Yuki"}, //text chat 3
             REST_15_M //second rest
     );
     public static final BossData CHILLER_2 = new BossData(
@@ -2608,7 +2608,7 @@ public class BossesData {
                 "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!",}, //text chat 2
             new String[]{"|-1|Mọi chuyện chưa kết thúc đâu",
                 "|-1|Mọi chuyện chưa kết thúc đâu",
-                "|-1|Ngọc Rồng Miku"}, //text chat 3
+                "|-1|NRO Yuki"}, //text chat 3
             AppearType.ANOTHER_LEVEL //type appear
     );
 

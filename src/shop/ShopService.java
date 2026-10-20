@@ -335,7 +335,7 @@ public class ShopService {
             msg.writer().writeByte(items.size());
             for (Item item : items) {
                 msg.writer().writeShort(item.template.id);
-                msg.writer().writeUTF("Ngọc Rồng BKT");
+                msg.writer().writeUTF("NRO Yuki");
                 msg.writer().writeByte(item.itemOptions.size() + 1);
                 for (Item.ItemOption io : item.itemOptions) {
                     msg.writer().writeByte(io.optionTemplate.id);

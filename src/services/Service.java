@@ -973,7 +973,7 @@ public class Service {
         Captions.add("Thần hủy diệt cấp 2");
         Captions.add("Thần hủy diệt cấp 3");
         Captions.add("Bản Năng Vô Cực");
-        Captions.add("Ngọc Rồng Miku");
+        Captions.add("Ngọc Rồng Yuki");
         
         return Captions;
     }

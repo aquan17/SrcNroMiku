@@ -41,7 +41,7 @@ public class EffectSkin {
     };
 
     private static final String[] textltdb = new String[]{
-        "Ngọc Rồng Bkt", "Idol Vip Quá!", "Idol",
+        "NRO Yuki", "Idol Vip Quá!", "Idol",
         "Trùm Server Đây Rồi!"
     };
 

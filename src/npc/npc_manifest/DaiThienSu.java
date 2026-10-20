@@ -32,13 +32,13 @@ public class DaiThienSu extends Npc {
         if (canOpenNpc(player)) {
             switch (select) {
                 case 0:
-                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Sức mạnh", (byte) 1, "Mở", "https://ngocrongbkt.online/core/bang-xep-hang.php");
+                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Sức mạnh", (byte) 1, "Mở", "https://longgioi.lugiacloud.com/");
                     break;
                 case 1:
-                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Nhiệm vụ", (byte) 1, "Mở", "https://ngocrongbkt.online/core/bang-xep-hang.php");
+                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Nhiệm vụ", (byte) 1, "Mở", "https://longgioi.lugiacloud.com/");
                     break;
                 case 2:
-                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Đại gia", (byte) 1, "Mở", "https://ngocrongbkt.online/core/bang-xep-hang.php");
+                    NpcService.gI().createBigMessage(player, avartar, "Top 100 Đại gia", (byte) 1, "Mở", "https://longgioi.lugiacloud.com/");
                     break;
             }
         }

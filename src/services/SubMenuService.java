@@ -46,7 +46,7 @@ public class SubMenuService {
                     selects = new String[]{"Oẳn tù tì", "Cừu sát", "Bắn Bluetooth", "Hủy"};
 //                    }
                     NpcService.gI().createMenuConMeo(player, ConstNpc.SUB_MENU, -1,
-                            "|0|Ngọc Rồng Miku\n" + plTarget.name + " (sức mạnh " + Util.numberToMoney(plTarget.nPoint.power) + ")", selects, plTarget);
+                            "|0|Ngọc Rồng Yuki\n" + plTarget.name + " (sức mạnh " + Util.numberToMoney(plTarget.nPoint.power) + ")", selects, plTarget);
                 }
                 break;
             case BAN:

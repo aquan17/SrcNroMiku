@@ -60,8 +60,8 @@ public class ServerManager {
     public static String timeStart;
 
     public static final Map CLIENTS = new HashMap();
-    public static String DOMAIN = "https://nromiku.com/"; // Domain Truy Cập
-    public static String NAME = "Nro Miku";
+    public static String DOMAIN = "https://longgioi.lugiacloud.com/"; // Domain Truy Cập
+    public static String NAME = "NRO Yuki";
     public static String IP = "36.50.135.98";
     public static int PORT = 14445;
 
@@ -222,9 +222,9 @@ public class ServerManager {
                         System.out.println("Đang bảo trì");
                     }).start();
                 } else if (line.equals("athread")) {
-                    System.out.println("Số thread hiện tại của Server Ngọc Rồng Miku: " + Thread.activeCount());
+                    System.out.println("Số thread hiện tại của Server NRO Yuki: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {
-                    System.out.println("Số lượng người chơi hiện tại của Server Ngọc Rồng Miku: " + Client.gI().getPlayers().size());
+                    System.out.println("Số lượng người chơi hiện tại của Server NRO Yuki: " + Client.gI().getPlayers().size());
                 } else if (line.equals("shop")) {
                     Manager.gI().updateShop();
                     System.out.println("===========================DONE UPDATE SHOP===========================");

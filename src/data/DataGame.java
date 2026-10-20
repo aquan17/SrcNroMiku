@@ -44,7 +44,7 @@ public class DataGame {
     public static int vsRes = 1;
     public static short maxSmallVersion = 32767;
     
-    public static String LINK_IP_PORT = "Nro Miku:127.0.0.1:14445:0";
+    public static String LINK_IP_PORT = "NRO Yuki:127.0.0.1:14445:0";
     public static Map MAP_MOUNT_NUM = new HashMap();
     
     public static void sendVersionGame(MySession session) {
@@ -159,7 +159,7 @@ public class DataGame {
                     msg.writer().writeByte(skillTemp.type);
                     msg.writer().writeShort(skillTemp.iconId);
                     msg.writer().writeUTF(skillTemp.damInfo);
-                    msg.writer().writeUTF("NroBkt");
+                    msg.writer().writeUTF("NroYuki");
                     if (skillTemp.id != 0) {
                         msg.writer().writeByte(skillTemp.skillss.size());
                         for (Skill skill : skillTemp.skillss) {
@@ -217,16 +217,6 @@ public class DataGame {
     public static void sendDataImageVersion(MySession session) {
         Message msg;
         try {
-//            msg = new Message(-111);
-//            msg.writer().writeShort(0);
-//            msg.writer().writeUTF("NguyenDucVuEntertainment");
-//            msg.writer().writeByte(0);
-//            msg.writer().writeUTF("DucVuPro");
-//            msg.writer().writeByte(1);
-//            msg.writer().writeUTF("VuDangCapVaiLonRaMaBanDeoBietThoiDitMeBan");
-//            msg.writer().writeByte(2);
-//            session.doSendMessage(msg);
-//            msg.cleanup();
         } catch (Exception e) {
             Logger.logException(DataGame.class, e);
         }
